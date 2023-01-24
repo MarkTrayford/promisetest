@@ -10,6 +10,7 @@ const requestListener = function (req, res) {
     
     switch (req.url) {
         case "/success":
+            console.log('success'); 
             res.writeHead(200);
             res.end('your call succeeded');
             break
@@ -19,7 +20,7 @@ const requestListener = function (req, res) {
                     res.writeHead(200);
                 res.end('your wait succeeded');
                 
-                }, 20000);
+                }, 5000);
                 
                 break
         case "/failure":

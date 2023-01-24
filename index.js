@@ -12,12 +12,19 @@ var ar = [1, 2, 3, 4, 5, 6];
 
 const axios = require('axios');
 console.log(axios.isCancel('something'));
+makeHTTPCalls();
 
- axios.get('http://localhost:8123/wait').then ( responseArr => {
-    //this will be executed only when all requests are complete
-    console.log('Response - ', responseArr.data);
+async function  makeHTTPCalls  () {
+
+const allPromise = await  Promise.all([axios.get('http://localhost:8123/wait'), axios.get('http://localhost:8123/success') ])
+allPromise.then( (responses) =>  { console.log('all done' + responses[0].data ); console.log('all done' + responses[1].data ); }  )
+                .catch( (error) => console.log('error ' ))
+}
+//  axios.get('http://localhost:8123/wait').then ( responseArr => {
+//     //this will be executed only when all requests are complete
+//     console.log('Response - ', responseArr.data);
     
-  }).catch( error => console.log(error.response.data) )  ;
+//  }).catch( error => console.log(error.response.data) )  ;
 
 // var prom = new Promise( async (resolve, reject) => {  
 //      reject('rejecting message goes here');
