@@ -16,8 +16,8 @@ makeHTTPCalls();
 
 async function  makeHTTPCalls  () {
 
-const allPromise = await  Promise.all([axios.get('http://localhost:8123/wait'), axios.get('http://localhost:8123/success') ])
-allPromise.then( (responses) =>  { console.log('all done' + responses[0].data ); console.log('all done' + responses[1].data ); }  )
+const allPromise =  Promise.all([axios.get('http://localhost:8123/wait'), axios.get('http://localhost:8123/success') ])
+allPromise.then( (responses) =>  { 'log', console.log('hello', responses[0]) ; console.log('all done' + responses[0].data ); console.log('all done' + responses[1].data ); }  )
                 .catch( (error) => console.log('error ' ))
 }
 //  axios.get('http://localhost:8123/wait').then ( responseArr => {
